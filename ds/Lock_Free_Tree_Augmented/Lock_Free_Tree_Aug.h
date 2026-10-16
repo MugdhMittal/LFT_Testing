@@ -32,7 +32,9 @@ struct Internal;
 template <typename Key, typename Value>
 struct Info;
 
-enum state { CLEAN, IFLAG, DFLAG, MARK };
+// Pointer-sized so Update has no padding bytes: std::atomic<Update> CAS
+// compares the full object representation on older libstdc++.
+enum state : std::uintptr_t { CLEAN, IFLAG, DFLAG, MARK };
 
 template <typename Key, typename Value>
 struct Version {
