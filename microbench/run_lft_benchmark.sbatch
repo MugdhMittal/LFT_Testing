@@ -16,7 +16,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=128
-#SBATCH --exclusive
 #SBATCH --mem=0
 #SBATCH --array=0-1
 #SBATCH --output=slurm-lft-%A_%a.out
