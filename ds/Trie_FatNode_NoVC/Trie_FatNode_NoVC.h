@@ -4,6 +4,7 @@
 #include <atomic>
 #include <cstddef>
 #include <cstdint>
+#include <iostream>
 #include <limits>
 #include <stdexcept>
 #include <type_traits>
@@ -193,6 +194,7 @@ public:
         : recmgr_(recmgr), key_min_(key_min), key_max_(key_max),
           no_value_(no_value), logical_size_(checked_range(key_min, key_max)),
           initialized_(num_threads) {
+        std::cout << "struct_sizes=" << "ArraySlot:" << sizeof(ArraySlot<Value>) << ";" << "Version:" << sizeof(Version<Value>) << ";" << "Node:" << sizeof(Node<Key, Value>) << std::endl;
         leaves_.resize(logical_size_, nullptr);
         for (auto& initialized : initialized_)
             initialized.store(false, std::memory_order_relaxed);

@@ -70,7 +70,7 @@ class ds_adapter {
         return find(tid, key) != getNoValue();
     }
 
-    int size(const int tid) { return ds->size(tid); }
+    int64_t size(const int tid) { return ds->keySum(); }
 
     int64_t keySum() { return ds->keySum(); }
 

@@ -59,7 +59,7 @@ public:
     V erase(int tid, const K& k) { return ds_->erase(tid, k); }
     V find(int tid, const K& k) { return ds_->find(tid, k); }
     bool contains(int tid, const K& k) { return find(tid, k) != no_value_; }
-    int size(int tid) { return ds_->size(tid); }
+    std::int64_t size(int tid) { return ds_->keySum(); }
     std::int64_t keySum() { return ds_->keySum(); }
     int rangeQuery(int, const K&, const K&, K* const, V* const) {
         setbench_error("range queries are not supported by this BST");

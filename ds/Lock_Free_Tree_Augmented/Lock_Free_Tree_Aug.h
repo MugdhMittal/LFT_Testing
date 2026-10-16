@@ -153,6 +153,7 @@ class Lock_Free_Tree {
           KEY_MAX(_KEY_MAX),
           INFINITY1(std::numeric_limits<Key>::max() - 1),
           INFINITY2(std::numeric_limits<Key>::max()) {
+        std::cout << "struct_sizes=" << "Version:" << sizeof(Version<Key, Value>) << ";" << "Update:" << sizeof(Update<Key, Value>) << ";" << "Info:" << sizeof(Info<Key, Value>) << ";" << "Node:" << sizeof(Node<Key, Value>) << ";" << "Internal:" << sizeof(Internal<Key, Value>) << ";" << "Leaf:" << sizeof(Leaf<Key, Value>) << ";" << "IInfo:" << sizeof(IInfo<Key, Value>) << ";" << "DInfo:" << sizeof(DInfo<Key, Value>) << std::endl;
         if (_KEY_MIN > _KEY_MAX || _KEY_MAX >= INFINITY1)
             throw std::invalid_argument("BST key range overlaps sentinel");
         for (int i = 0; i < _NUM_THREADS; ++i) {

@@ -77,6 +77,7 @@ class Trie_Baseline {
           KEY_MAX(key_max),
           N(N_),
           NO_VALUE(no_val) {
+        std::cout << "struct_sizes=" << "Version:" << sizeof(Version<Key, Value>) << ";" << "Node:" << sizeof(Node<Key, Value>) << std::endl;
         Leaf = new Node<Key, Value>*[N];
         for (size_t i = 0; i < N; ++i) Leaf[i] = nullptr;
         Root = build_tree(0, N - 1, nullptr);

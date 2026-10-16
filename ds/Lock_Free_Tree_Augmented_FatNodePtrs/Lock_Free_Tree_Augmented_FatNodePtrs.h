@@ -4,6 +4,7 @@
 #include <atomic>
 #include <cstddef>
 #include <cstdint>
+#include <iostream>
 #include <limits>
 #include <stack>
 #include <stdexcept>
@@ -304,6 +305,7 @@ public:
           inf2_(std::numeric_limits<Key>::max()), no_value_(no_value),
           recmgr_(recmgr), root_(nullptr), initialized_(num_threads),
           paths_(num_threads) {
+        std::cout << "struct_sizes=" << "VersionOwner:" << sizeof(VersionOwner<Key>) << ";" << "VersionRef:" << sizeof(VersionRef<Key>) << ";" << "ArraySlot:" << sizeof(ArraySlot<Key>) << ";" << "VersionLeaf:" << sizeof(VersionLeaf<Key, Value>) << ";" << "VersionInternal:" << sizeof(VersionInternal<Key>) << ";" << "Node:" << sizeof(Node<Key>) << ";" << "Info:" << sizeof(Info) << ";" << "Update:" << sizeof(Update<Key>) << ";" << "Internal:" << sizeof(Internal<Key>) << ";" << "Leaf:" << sizeof(Leaf<Key, Value>) << ";" << "IInfo:" << sizeof(IInfo<Key>) << ";" << "DInfo:" << sizeof(DInfo<Key>) << std::endl;
         for (auto& path : paths_) path = new std::stack<Node<Key>*>();
         if (key_min > key_max || key_max >= inf1_)
             throw std::invalid_argument("BST key range overlaps sentinel");
